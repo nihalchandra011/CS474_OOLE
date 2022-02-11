@@ -1,9 +1,8 @@
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
-import SetTheory.SetExpression.*
 
-import java.util.NoSuchElementException
 import scala.collection.mutable
+import SetTheory.SetExpression.*
 
 class SetTesting extends AnyFlatSpec with Matchers {
   behavior of "Check Operation"
@@ -32,22 +31,35 @@ class SetTesting extends AnyFlatSpec with Matchers {
     Assign("asset2", Value(Set("x", 1,"y",2,"z",3))).eval should equal(Set("x", 1,"y",2,"z",3))
     Assign("var1",Value(15)).eval should equal(15)
     Assign("var2",Variable("var")).eval should equal(10)
-    Assign("setUnion", Union("set1","set2")).eval.asInstanceOf[Set[Any]] should contain allOf (10,20,30,40,50,60,70,80)
+    Assign("setUnion", Union("set1","set2")).eval.asInstanceOf[mutable.Set[Any]] should contain allOf (10,20,30,40,50)
   }
   behavior of "Insert and Delete Operations"
   it should "add and remove objects from the set" in {
-    Insert("aSetName", Value(6)).eval.asInstanceOf[Set[Any]] should contain allOf(1,2,3,4,5,6)
-    Insert("s", Value(7)).eval.asInstanceOf[Set[Any]] should contain (7)
-    Insert("s", Value(8)).eval.asInstanceOf[Set[Any]] should contain allOf(7,8)
-    Insert("s", Value(9)).eval.asInstanceOf[Set[Any]] should contain allOf(7,8,9)
-//    Delete("s", Value(9)).eval.asInstanceOf[mutable.Set[Any]] shouldBe mutable.Set(7,8)
+    Insert("aSetName", Value(6)).eval.asInstanceOf[mutable.Set[Any]] should contain allOf(1,2,3,4,5,6)
+    Insert("s", Value(7)).eval.asInstanceOf[mutable.Set[Any]] should contain (7)
+    Insert("s", Value(8)).eval.asInstanceOf[mutable.Set[Any]] should contain allOf(7,8)
+    Insert("s", Value(9)).eval.asInstanceOf[mutable.Set[Any]] should contain allOf(7,8,9)
+    Delete("s", Value(9)).eval.asInstanceOf[mutable.Set[Any]] should contain allOf(7,8)
+  }
+  behavior of "Macro Operation"
+  it should "implement the operation assigned to the Macro name" in {
+    Assign("x", Value(mutable.Set(10,15,20))).eval
+    assignMacro("DeleteFromSet", Delete("x", Value(15))).eval
+    Assign("r", resolveMacro("DeleteFromSet")).eval
+    Variable("r").eval.asInstanceOf[mutable.Set[Any]] should contain allOf(10,20)
+  }
+  behavior of "Scopes"
+  it should "prevent the elements present inside the inner scope to be accessed in the outer scope" in {
+    NestedScope("outerScope",Scope("innerScope",Value("set1"),Variable("var1"),Value(5)),Value("set2"),Value(10),Value("set3")).eval shouldEqual mutable.HashMap("innerScope" -> mutable.HashMap("set1" -> Set(0, 5)), "outerScope" -> mutable.HashMap("set2" -> Set(10, "set3")))
+    Scope("aName",Value("set1"),Value(100),Value("aString")).eval shouldEqual Map("set1" -> Set(100, "aString"))
+    Scope("anotherName",Value("set1"),Value(13),Value("anotherString")).eval shouldEqual mutable.HashMap("set1" -> Set(13, "anotherString"))
   }
   behavior of "Set Operations"
   it should "find the union, intersection, difference, symmetric difference and cartesian product of the given sets" in {
-    Union("set1","set2").eval.asInstanceOf[Set[Any]] should contain allOf (10,20,30,40,50,60,70,80)
-    Intersection("set1","set2").eval.asInstanceOf[Set[Any]] should contain allOf (40,50)
-    SetDifference("set1","set2").eval.asInstanceOf[Set[Any]] should contain allOf (10,20,30)
-    SymmetricDifference("set1","set2").eval.asInstanceOf[Set[Any]] should contain allOf (10, 20, 30, 60, 70, 80)
-//    CartesianProduct("set1","set2").eval.asInstanceOf[Set[Any]] should contain allOf (10,20,30,40,50,60,70,80)
+    Union("set1","set2").eval.asInstanceOf[mutable.Set[Any]] should contain allOf (10,20,30,40,50)
+    Intersection("set1","set2").eval.asInstanceOf[mutable.Set[Any]] should contain (30)
+    SetDifference("set1","set2").eval.asInstanceOf[mutable.Set[Any]] should contain allOf (10,20)
+    SymmetricDifference("set1","set2").eval.asInstanceOf[mutable.Set[Any]] should contain allOf (10, 20, 40, 50)
+    CartesianProduct("set1","set2").eval.asInstanceOf[mutable.Set[Any]] should contain allOf((10,30), (10,50), (10,40), (30,50), (20,40), (30,30), (30,40), (20,30), (20,50))
   }
 }
