@@ -18,7 +18,7 @@ To use this language, clone this GitHub Repository to you local machine and exec
 <br>In this language, the following operations have been implemented:<br>
 - **Value(input: Any)**<br>
   - Returns the value that is passed into it.
-  - THe value could be of Any type.
+  - The value passed is of Any type.
 
 - **Check(setName: String, element: SetExpression)**<br>
   - Checks if an element is contained in a set or not. 
