@@ -10,7 +10,7 @@ object SetTheory:
     "set1"->mutable.Set(10,20,30), "set2"->mutable.Set(30,40,50))
   //the statement below creates a binding that maps macro name to its corresponding function
   private val MacroBinding: mutable.Map[String, SetExpression] = mutable.Map[String,SetExpression]()
-  
+  //The statements below define the usage of scopes
   private val SetScopeBinding : mutable.Map[String,Set[Any]]= mutable.Map()
   private val ScopeBinding : mutable.Map[String, mutable.Map[String,Set[Any]]] = mutable.Map()
 
@@ -18,9 +18,9 @@ object SetTheory:
   enum SetExpression:
     case Value(input: Any)
     case Variable(varName: String)
-    case Check(setName: String, element:SetExpression)
-    case Assign(op1: String, value: SetExpression)
-    case Insert(op1: String, element: SetExpression)
+    case Check(setName: String, element: SetExpression)
+    case Assign(varName: String, value: SetExpression)
+    case Insert(varName: String, element: SetExpression)
     case Delete(varName: String, element: SetExpression)
     case Union(set1: String, set2: String)
     case Intersection(set1: String, set2: String)
@@ -32,7 +32,7 @@ object SetTheory:
     case Scope(scopeName:String,setName:SetExpression,one:SetExpression,two:SetExpression)
     case NestedScope(outerScopeName:String,innerScopeExp:SetExpression,outerOne:SetExpression,outerTwo:SetExpression, outerThree:SetExpression)
 
-    //The main function that contains the definitions of the set operations
+    //This is basically the main function that contains the definitions of the set operations
     def eval: Any =
       this match {
         //Returns the Value that is passed into it
@@ -51,22 +51,22 @@ object SetTheory:
           Binding(setName).asInstanceOf[mutable.Set[Any]].contains(element.eval)
 
         //Assigns the 'value' to the variableName 'op1'
-        case Assign(op1, value) =>
-          Binding +=(op1->value.eval)
-          Binding(op1)
+        case Assign(varName, value) =>
+          Binding +=(varName->value.eval)
+          Binding(varName)
 
         //Inserts an element into the set
         //Creates a new set if it doesn't exist
-        case Insert(op1, element) =>
-          if(Binding.contains(op1))
-            val newAddition = Binding(op1).asInstanceOf[mutable.Set[Any]] + element.eval
-              Binding += (op1 -> newAddition)
-            Binding(op1)
+        case Insert(varName, element) =>
+          if(Binding.contains(varName))
+            val newAddition = Binding(varName).asInstanceOf[mutable.Set[Any]] + element.eval
+              Binding += (varName -> newAddition)
+            Binding(varName)
           else
-            Binding += (op1 -> mutable.Set(element.eval))
+            Binding += (varName -> mutable.Set(element.eval))
             mutable.Set(element.eval)
 
-        //Deletes an element from the set
+        //Deletes` an element from the set
         case Delete(varName, element) =>
           Binding(varName).asInstanceOf[mutable.Set[Any]] -= element.eval
 

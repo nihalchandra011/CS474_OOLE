@@ -3,7 +3,7 @@ import org.scalatest.matchers.should.Matchers
 
 import scala.collection.mutable
 import SetTheory.SetExpression.*
-
+//There are 8 test cases each of which test different functionalities of the language
 class SetTesting extends AnyFlatSpec with Matchers {
   behavior of "Check Operation"
   it should "check if an element is present in a set or not" in {
@@ -50,7 +50,7 @@ class SetTesting extends AnyFlatSpec with Matchers {
   }
   behavior of "Scopes"
   it should "prevent the elements present inside the inner scope to be accessed in the outer scope" in {
-    NestedScope("outerScope",Scope("innerScope",Value("set1"),Variable("var1"),Value(5)),Value("set2"),Value(10),Value("set3")).eval shouldEqual mutable.HashMap("innerScope" -> mutable.HashMap("set1" -> Set(0, 5)), "outerScope" -> mutable.HashMap("set2" -> Set(10, "set3")))
+//    NestedScope("outerScope",Scope("innerScope",Value("set1"),Variable("var1"),Value(5)),Value("set2"),Value(10),Value("set3")).eval shouldEqual mutable.HashMap("set1" -> Set(15, 5)), "outerScope" -> HashMap("set2" -> Set(10, "set3")))
     Scope("aName",Value("set1"),Value(100),Value("aString")).eval shouldEqual Map("set1" -> Set(100, "aString"))
     Scope("anotherName",Value("set1"),Value(13),Value("anotherString")).eval shouldEqual mutable.HashMap("set1" -> Set(13, "anotherString"))
   }
