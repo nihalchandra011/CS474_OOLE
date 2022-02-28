@@ -15,7 +15,8 @@ To use this language, clone this GitHub Repository to you local machine and exec
 - Choose the directory where you want to load the project and click  on the 'Clone' button.
 - Voila! The porject is loaded into your IntelliJ. You can now run the program and execute the test cases.
 
-**Class Constructs**
+**Class Constructs**<br>
+The following datatypes have been used to implement classes, objects, methods and their interaction including inheritance.
 
 - **ClassDef(className: String, classContents: Expression)**<br>
   - Creates a blueprint of the class and adds it to the mapping.
@@ -53,13 +54,13 @@ To use this language, clone this GitHub Repository to you local machine and exec
 
 **Testing**<br>
 Using IntelliJ:<br>
-The tests are present under src/test/scala/SetTesting.scala. Right-click and run the program to check the test cases. 
+The tests are present under ```src/test/scala/SetTesting2.scala```. Right-click and run the program to check the test cases. 
 
 Using Command Line:<br>
 To run the SBT Tests from the Command Line, do the following:
   - Open the Command Prompt.
   - Navigate to the directory holding the current project.
-  - Type sbt new scala/scalatest-example.g8 and hit enter.
-  - Now run sbt test. This will evaluate your current scala file (SetTheory2.scala) using the test cases provided in SetTesting2.sbt.
+  - Type ```sbt new scala/scalatest-example.g8``` and hit Enter.
+  - Now run ```sbt test```. This will evaluate your current scala file (SetTheory2.scala) using the test cases provided in SetTesting2.sbt.
 
 
