@@ -15,9 +15,9 @@ To use this language, clone this GitHub Repository to you local machine and exec
 - Choose the directory where you want to load the project and click  on the 'Clone' button.
 - Voila! The project is loaded into your IntelliJ. You can now run the program and execute the test cases.
 
-NOTE - 
-Homework 1 has been implemented in the Scala file located at src/test/scala/SetTheory.scala.
-Homework 2 has been implemented in the Scala file located at src/test/scala/SetTheory2.scala.
+NOTE -
+<br>Homework 1 has been implemented in the Scala file located at ```src/test/scala/SetTheory.scala```.
+<br>Homework 2 has been implemented in the Scala file located at ```src/test/scala/SetTheory2.scala```.
 
 **Set Operations**<br>
 In this language, the following operations have been implemented:<br>
