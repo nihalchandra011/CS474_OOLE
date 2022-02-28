@@ -15,6 +15,8 @@ To use this language, clone this GitHub Repository to you local machine and exec
 - Choose the directory where you want to load the project and click  on the 'Clone' button.
 - Voila! The project is loaded into your IntelliJ. You can now run the program and execute the test cases.
 
+NOTE - Homework 1 has been implemented in the Scala file located at ```src/test/scala/SetTheory.scala```.
+
 **Set Operations**
 <br>In this language, the following operations have been implemented:<br>
 - **Value(input: Any)**<br>
@@ -75,7 +77,7 @@ To use this language, clone this GitHub Repository to you local machine and exec
 
 Testing
 Using IntelliJ:
-The tests are present under src/test/scala/SetTesting2.scala. Right-click and run the program to check the test cases.
+The tests are present under ```src/test/scala/SetTesting2.scala```. Right-click and run the program to check the test cases.
 
 Using Terminal/Command Prompt:
 To run the SBT Tests from the Command Line, do the following:
