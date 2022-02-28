@@ -1,6 +1,6 @@
 ## CS474_OOLE
 # Homework 1 - Set Theory
-**Nihal CHandra**<br>
+**Nihal Chandra**<br>
 **UIN: 674916217**<br>
 This project implements a Domain-Specific Language (DSL) using Scala for writing and evaluating set operations of Set Theory. Using this DSL, users can describe and evaluate binary operations on sets using variables and scopes where elements of the sets can be objects of any type.
 
