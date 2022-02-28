@@ -1,7 +1,7 @@
 ## CS474_OOLE
 # Homework 1 - Set Theory
-**Nihal CHandra**
-**UIN: 674916217**
+**Nihal CHandra**<br>
+**UIN: 674916217**<br>
 This project implements a Domain-Specific Language (DSL) using Scala for writing and evaluating set operations of Set Theory. Using this DSL, users can describe and evaluate binary operations on sets using variables and scopes where elements of the sets can be objects of any type.
 
 **Execution Environment**<br>
@@ -13,7 +13,7 @@ To use this language, clone this GitHub Repository to you local machine and exec
 - Copy the github link of this repository.
 - When you first open the IntelliJ IDEA page, you see a screen with the  option 'Get from VCS'. Click on that to see a box where you can enter the Github URL. 
 - Choose the directory where you want to load the project and click  on the 'Clone' button.
-- Voila! The porject is loaded into your IntelliJ. You can now run the program and execute the test cases.
+- Voila! The project is loaded into your IntelliJ. You can now run the program and execute the test cases.
 
 **Set Operations**
 <br>In this language, the following operations have been implemented:<br>
@@ -81,9 +81,9 @@ Using Terminal/Command Prompt:
 To run the SBT Tests from the Command Line, do the following:
 
 Open the Command Prompt.
-Navigate to the directory holding the current project.
-Type sbt new scala/scalatest-example.g8 and hit Enter.
-Now run sbt test.
-You will be prompted to enter a template name. Give it an interesting name and hit Enter.
-This will evaluate all the test cases provided in the Project.
-If all of them execute, you will get a green success message.
+- Navigate to the directory holding the current project.
+- Type sbt new scala/scalatest-example.g8 and hit Enter.
+- Now run sbt test.
+- You will be prompted to enter a template name. Give it an interesting name and hit Enter.
+- This will evaluate all the test cases provided in the Project.
+- If all of them execute, you will get a green success message.
