@@ -56,11 +56,14 @@ The following datatypes have been used to implement classes, objects, methods an
 Using IntelliJ:<br>
 The tests are present under ```src/test/scala/SetTesting2.scala```. Right-click and run the program to check the test cases. 
 
-Using Command Line:<br>
+Using Terminal/Command Prompt:<br>
 To run the SBT Tests from the Command Line, do the following:
   - Open the Command Prompt.
   - Navigate to the directory holding the current project.
   - Type ```sbt new scala/scalatest-example.g8``` and hit Enter.
-  - Now run ```sbt test```. This will evaluate your current scala file (SetTheory2.scala) using the test cases provided in SetTesting2.sbt.
+  - Now run ```sbt test```.
+  - You will be prompted to enter a template name. Give it an interesting name and hit Enter. 
+  - This will evaluate all the test cases provided in the Project.
+  - If all of them execute, you will get a green success message.
 
 
