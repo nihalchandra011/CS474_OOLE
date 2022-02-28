@@ -1,6 +1,7 @@
 ## CS474_OOLE
 # Homework 1 - Set Theory
-
+**Nihal CHandra**
+**UIN: 674916217**
 This project implements a Domain-Specific Language (DSL) using Scala for writing and evaluating set operations of Set Theory. Using this DSL, users can describe and evaluate binary operations on sets using variables and scopes where elements of the sets can be objects of any type.
 
 **Execution Environment**<br>
@@ -73,4 +74,16 @@ To use this language, clone this GitHub Repository to you local machine and exec
   - Returns the result obtained after performing the corresponding operation stored as 'macroName'.
 
 **Testing**<br>
-The tests are present under src/test/scala/SetTesting.scala. Run the program to check the test cases. 
+Using IntelliJ:
+The tests are present under src/test/scala/SetTesting2.scala. Right-click and run the program to check the test cases.
+
+Using Terminal/Command Prompt:
+To run the SBT Tests from the Command Line, do the following:
+
+Open the Command Prompt.
+Navigate to the directory holding the current project.
+Type sbt new scala/scalatest-example.g8 and hit Enter.
+Now run sbt test.
+You will be prompted to enter a template name. Give it an interesting name and hit Enter.
+This will evaluate all the test cases provided in the Project.
+If all of them execute, you will get a green success message.
