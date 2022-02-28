@@ -33,11 +33,13 @@ The following datatypes have been used to implement classes, objects, methods an
   - This is invoked when a new object is created.
   - Initializes the values of the instance variables.
   - Can execute multiple number of initializations.
+  - Passing parameters to constructors is not implemented.
 
 - **Method(methodName: String, methodsExp: Expression)**<br>
   - Implements the operations present inside the method.
   - Returns the result of the last operation.
   - Can take in and execute multiple operations inside it.
+  - Passing parameters to methods is not implemented.
 
 - **case NewObject(className: String, objName: String)**<br>
   - Creates a new object of the given className.
