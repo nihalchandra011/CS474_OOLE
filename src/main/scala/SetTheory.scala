@@ -3,6 +3,7 @@ Homework 1
 Domain Specific Language (DSL)
 Set Theory
 */
+
 import scala.collection.mutable           //Importing scala.collection.mutable to be able to use val while dynamically updating the bindings
 object SetTheory:
   //the statement below creates a binding that maps 'String' datatype (object name) to 'Any' type (its value) using mutable.Map
@@ -60,7 +61,7 @@ object SetTheory:
         case Insert(varName, element) =>
           if(Binding.contains(varName))
             val newAddition = Binding(varName).asInstanceOf[mutable.Set[Any]] + element.eval
-              Binding += (varName -> newAddition)
+            Binding += (varName -> newAddition)
             Binding(varName)
           else
             Binding += (varName -> mutable.Set(element.eval))
