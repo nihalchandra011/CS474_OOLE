@@ -15,8 +15,8 @@ To use this language, clone this GitHub Repository to you local machine and exec
 - Choose the directory where you want to load the project and click  on the 'Clone' button.
 - Voila! The project is loaded into your IntelliJ. You can now run the program and execute the test cases.
 
-**Set Operations**
-<br>In this language, the following operations have been implemented:<br>
+**Set Operations**<br>
+In this language, the following operations have been implemented:<br>
 - **Value(input: Any)**<br>
   - Returns the value that is passed into it.
   - The value passed is of Any type.
@@ -72,6 +72,43 @@ To use this language, clone this GitHub Repository to you local machine and exec
 - **resolveMacro(macroName: String)**<br> 
   - Resolves the 'macroName' and implements its corresponding SetExpression.
   - Returns the result obtained after performing the corresponding operation stored as 'macroName'.
+
+**Class Constructs**<br>
+The following datatypes have been used to implement classes, objects, methods and their interaction including inheritance.
+
+- **ClassDef(className: String, classContents: Expression)**<br>
+  - Creates a blueprint of the class and adds it to the mapping.
+  - If there are any field values, initializes it to 0.
+  - Constructors and Methods are not evaluted just yet. They are executed when the they are called using the corresponding class object.
+
+- **Field(fieldName: String)**<br>
+  - The field is defined here.
+  - Its is given a default value 0.
+
+- **Constructor(className: String, expressions: Expression)**<br>
+  - This is invoked when a new object is created.
+  - Initializes the values of the instance variables.
+  - Can execute multiple number of initializations.
+
+- **Method(methodName: String, methodsExp: Expression)**<br>
+  - Implements the operations present inside the method.
+  - Returns the result of the last operation.
+  - Can take in and execute multiple operations inside it.
+
+- **case NewObject(className: String, objName: String)**<br>
+  - Creates a new object of the given className.
+  - Initializes the values defined in the class constructor.
+  - The given language currently works with only two objects at a time.
+  - Returns the objName after creation.
+ 
+- **InvokeMethod(objName: String, methodName: String)**<br>
+  - Invokes the method 'methodName' present in the class of the object 'objName' passed as parameter.
+  - Returns the result of the method after execution.
+
+- **Extends(subClassName: String, superClassName: String)**<br>
+  - Implements the conventional 'extends' keyword.
+  - This expression gets in all the methods and variables of the superclass into the subclass.
+  - Prevents Multiple Inheritance.
 
 **Testing**<br>
 Using IntelliJ:
