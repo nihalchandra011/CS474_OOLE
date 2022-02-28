@@ -1,6 +1,7 @@
 ## CS474_OOLE
-# Homework 1 - Set Theory
-
+# Homework 2 - Set Theory
+**Nihal Chandra**<br>
+**UIN: 674916217**<br><br>
 This project implements a Domain-Specific Language (DSL) using Scala for writing and evaluating set operations of Set Theory. Using this DSL, users can describe and evaluate binary operations on sets using variables and scopes where elements of the sets can be objects of any type.
 
 **Execution Environment**<br>
@@ -14,63 +15,51 @@ To use this language, clone this GitHub Repository to you local machine and exec
 - Choose the directory where you want to load the project and click  on the 'Clone' button.
 - Voila! The porject is loaded into your IntelliJ. You can now run the program and execute the test cases.
 
-**Set Operations**
-<br>In this language, the following operations have been implemented:<br>
-- **Value(input: Any)**<br>
-  - Returns the value that is passed into it.
-  - The value passed is of Any type.
+**Class Constructs**
 
-- **Check(setName: String, element: SetExpression)**<br>
-  - Checks if an element is contained in a set or not. 
-  - Takes in two parameters - the Set Name and the element to be stored in it (could be an integer, a Double type or a string). 
-  - It returns 'true' if the element is found or else 'false'.
+- **ClassDef(className: String, classContents: Expression)**<br>
+  - Creates a blueprint of the class and adds it to the mapping.
+  - If there are any field values, initializes it to 0.
+  - Constructors and Methods are not evaluted just yet. They are executed when the they are called using the corresponding class object.
 
-- **Assign(varName: String, value: SetExpression)**<br>
-  - Assigns the value obtained from the SetExpression to variable 'varName'. 
-  - It will create a new one if the given variable name contained in op1 does not exist. 
-  - Returns the value after assigning it.
+- **Field(fieldName: String)**<br>
+  - The field is defined here.
+  - Its is given a default value 0.
 
-- **Insert(varName: String, element: SetExpression)**<br> 
-  - Inserts the element obtained from the SetExpression into the variable 'varName'.  
-  - Does not allow you (throws an error) to add elements to variables that do not exist. 
-  - Returns the value(s) stored in 'varName' after insertion of the element.
+- **Constructor(className: String, expressions: Expression)**<br>
+  - This is invoked when a new object is created.
+  - Initializes the values of the instance variables.
+  - Can execute multiple number of initializations.
 
-- **Delete(varName: String, element: SetExpression)**<br> 
-  - Deletes an element obtained from the SetExpression, from the set 'varName'.
-  - Ignores the deletion if the set does not exist itself.
-  - Returns the set after deletion.
-   
-- **Union(set1: String, set2: String)**<br> 
-  - Performs the union of the two sets 'set1' and 'set2'.
-  - In other words, it returns all the elements present in both set1 and set2.
-  - Returns the set obtained after performing the union operation.
+- **Method(methodName: String, methodsExp: Expression)**<br>
+  - Implements the operations present inside the method.
+  - Returns the result of the last operation.
+  - Can take in and execute multiple operations inside it.
 
-- **Intersection(set1: String, set2: String)**<br> 
-  - Performs the union of the two sets 'set1' and 'set2'.
-  - In other words, it returns only the common elements present in both set1 and set2.
-  - Returns the set obtained after performing the union operation.
+- **case NewObject(className: String, objName: String)**<br>
+  - Creates a new object of the given className.
+  - Initializes the values defined in the class constructor.
+  - The given language currently works with only two objects at a time.
+  - Returns the objName after creation.
+ 
+- **InvokeMethod(objName: String, methodName: String)**<br>
+  - Invokes the method 'methodName' present in the class of the object 'objName' passed as parameter.
+  - Returns the result of the method after execution.
 
-- **SetDifference(set1: String, set2: String)**<br> 
-  - Performs the set difference of the two sets 'set1' and 'set2'.
-  - In other words, it returns the elements present set1 but not in set2.
-  - Returns the set obtained after performing the difference operation.
-
-- **SymmetricDifference(set1: String, set2: String)**<br> 
-  - Performs the symmetric difference of the two sets 'set1' and 'set2'.
-  - In other words, it returns the elements  that are a member of exactly one of set1 and set2 (elements which are in one of the sets, but not in both).
-  - Returns the set obtained after finding their Symmetric Difference .
-
-- **CartesianProduct(set1: String, set2: String)**<br> 
-  - Performs the union of the two sets 'set1' and 'set2'.
-  - In other words, it returns the elements that are all possible ordered pairs (a, b), where a is a member of set1 and b is a member of set2.
-  - Returns the set obtained after finding the Cartesian Product of both the sets.
-
-- **assignMacro(macroName: String, macroOp: SetExpression)**<br> 
-  - Assigns the SetExpression contained in 'marcoOp' to the 'macroName' so that it can be easily referenced later through the marcoName.
-
-- **resolveMacro(macroName: String)**<br> 
-  - Resolves the 'macroName' and implements its corresponding SetExpression.
-  - Returns the result obtained after performing the corresponding operation stored as 'macroName'.
+- **Extends(subClassName: String, superClassName: String)**<br>
+  - Implements the conventional 'extends' keyword.
+  - This expression gets in all the methods and variables of the superclass into the subclass.
+  - Prevents Multiple Inheritance.
 
 **Testing**<br>
-The tests are present under src/test/scala/SetTesting.scala. Run the program to check the test cases. 
+Using IntelliJ:<br>
+The tests are present under src/test/scala/SetTesting.scala. Right-click and run the program to check the test cases. 
+
+Using Command Line:<br>
+To run the SBT Tests from the Command Line, do the following:
+  - Open the Command Prompt.
+  - Navigate to the directory holding the current project.
+  - Type sbt new scala/scalatest-example.g8 and hit enter.
+  - Now run sbt test. This will evaluate your current scala file (SetTheory2.scala) using the test cases provided in SetTesting2.sbt.
+
+
