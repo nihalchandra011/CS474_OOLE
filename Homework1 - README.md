@@ -77,7 +77,7 @@ NOTE - Homework 1 has been implemented in the Scala file located at ```src/test/
 
 Testing
 Using IntelliJ:
-The tests are present under ```src/test/scala/SetTesting2.scala```. Right-click and run the program to check the test cases.
+The tests are present under ```src/test/scala/SetTesting.scala```. Right-click and run the program to check the test cases.
 
 Using Terminal/Command Prompt:
 To run the SBT Tests from the Command Line, do the following:
