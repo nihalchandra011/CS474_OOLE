@@ -15,7 +15,7 @@ To use this language, clone this GitHub Repository to you local machine and exec
 - Choose the directory where you want to load the project and click  on the 'Clone' button.
 - Voila! The project is loaded into your IntelliJ. You can now run the program and execute the test cases.
 
-NOTE - Homework 3 has been implemented in the Scala file located at ```src/test/scala/SetTheory2.scala```.
+NOTE - Homework 3 has been implemented in the Scala file located at ```src/test/scala/SetTheory3.scala```.
 
 **Class Constructs**<br>
 In addition to the constructs implemented in Homeworks 1 and 2, the following datatypes have been used to implement abstract classes, abstract methods and interfaces and their interaction including inheritance.
