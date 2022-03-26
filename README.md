@@ -18,6 +18,7 @@ To use this language, clone this GitHub Repository to you local machine and exec
 NOTE -
 <br>Homework 1 has been implemented in the Scala file located at ```src/test/scala/SetTheory.scala```.
 <br>Homework 2 has been implemented in the Scala file located at ```src/test/scala/SetTheory2.scala```.
+<br>Homework 3 has been implemented in the Scala file located at ```src/test/scala/SetTheory3.scala```.
 
 **Set Operations**<br>
 In this language, the following operations have been implemented:<br>
