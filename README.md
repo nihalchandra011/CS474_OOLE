@@ -117,6 +117,28 @@ The following datatypes have been used to implement classes, objects, methods an
   - This expression gets in all the methods and variables of the superclass into the subclass.
   - Prevents Multiple Inheritance.
 
+- **AbstractClassDef(abstractClassName: String, abstractClassContents: Operations)**<br>
+  - This construct defines an abstract class.
+  - It should contain atleast 1 abstract method. (Will give an error message otherwise)
+  - In this construct, it is only created and the corresponding mappings are added.
+  - Returns the Class -> Method mappings after definition.
+
+- **AbstractMethod(methodName: String)**<br>
+  - Since it is abstract, its definition is not given.
+  - In this construct, only its mappings are added and returned.
+
+- **InterfaceDecl(interfaceName: String, abstractMethods: Operations)**<br>
+  - An interface is created with the name 'interfaceName'.
+  - It contains only abstract method.
+  - The default method has not been implemented.
+  - The abstract methods are defined when this interface is implemented.
+  - Returns mapping of interface to abstract methods.
+
+- **Implements(subClassName: String, interfaceName: String)**<br>
+  - The class 'subClassName' implemnts the 'interfaceName' interface.
+  - The parameters represent the following: subClassName - class, abstract class or interface | interfaceName: Interface
+  - Can implement multiple interfaces.
+
 **Testing**<br>
 Using IntelliJ:
 The tests are present under ```src/test/scala/SetTesting.scala``` and ```src/test/scala/SetTesting2.scala```. Right-click and run the programs to check the test cases.
