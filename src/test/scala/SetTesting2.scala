@@ -3,7 +3,7 @@ import org.scalatest.matchers.should.Matchers
 
 import scala.collection.mutable
 import SetTheory2.Expression.*
-//There are 8 test cases each of which test different functionalities of the language
+//There are 6 test cases each of which test different functionalities of the language
 class SetTesting2 extends AnyFlatSpec with Matchers {
 
   behavior of "Class Definition and Object Creation"

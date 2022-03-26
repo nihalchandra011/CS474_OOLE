@@ -1,0 +1,57 @@
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(SetTesting2, org.scalatest.tools.Framework$$anon$1@77303f, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(SetTesting, org.scalatest.tools.Framework$$anon$1@77303f, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(SetTesting3, org.scalatest.tools.Framework$$anon$1@77303f, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mSetTesting2:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mClass Definition and Object Creation[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should define a class and instantiate it[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mNested Classes[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should define an innerClass in an outerClass and be able to access using corresponding objects[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mSimple Inheritance using Extends and InvokeMethod[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should extend the super class and be able to access it using the instance of sub class[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mInheritance using Nested Classes[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should allow the inherited class object to access the methods (containing multiple operations) of nestedClass of superClass[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mMultiple Inheritance[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should not allow multiple inheritance[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mMethod Overriding during Inheritance[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should be able to execute the appropriate method when two methods have the same name[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mSetTesting3:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAbstract Class and Interface cannot be initiated[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should give an error message when an Abstract Class or Interface is initiated[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mChild class should implement all abstract methods or else error (extends, implements)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should give an error message when all the abstract methods are not implemented[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAn Interface cannot implement another Interface[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should give an error message when an interface tries to implement another interface[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mInterface cannot inherit from a pure abstract class[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should give an error message when an interface inherits from a pure abstract class[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAbstract Class inherits from another abstract class and a sub class will implement the unimplemented abstract methods[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should ensure that the concrete sub class implements all the abstract methods[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAbstract Class implements interface partially and sub class implements the remaining abstract methods fully.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should define a class and instantiate it[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mA Class implementing multiple interfaces[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should ensure that a class implements 2 or more interfaces within a single Implements construct[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mSetTesting:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mCheck Operation[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should check if an element is present in a set or not[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mValue Operation[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return the same value (Int/Double/String) that is passed into it[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mVariable Operation[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return the value stored in that variable if the variable exists or else default it to zero[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAssign Operation[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should assign the value to the Set/Variable or create a new one if it does not exist[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mInsert and Delete Operations[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should add and remove objects from the set[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mMacro Operation[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should implement the operation assigned to the Macro name[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mScopes[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should prevent the elements present inside the inner scope to be accessed in the outer scope[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mSet Operations[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should find the union, intersection, difference, symmetric difference and cartesian product of the given sets[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 554 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 21[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 3, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 21, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SetTesting[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SetTesting3[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SetTesting2[0m

@@ -35,7 +35,7 @@ object SetTheory2:
     case CartesianProduct(set1: String, set2: String)
 
     case ClassDef(className: String, classContents: Expression*)
-    case Field(fieldName: String)
+      case Field(fieldName: String)
     case Constructor(className: String, expressions: Expression*)
     case Method(methodName: String, methodsExp: Expression*)
     case NewObject(className: String, objName: String)
@@ -162,3 +162,10 @@ object SetTheory2:
               new_binding += ((a, b))
           new_binding
       }
+
+//@main def runExpression: Unit = {
+//  import SetTheory2.Expression.*
+//  //  println(Assign("f", Value(2)).eval)
+//  println(ClassDef("someClassName", Field("f"), Method("m1", Value(1)), Method("m2")).eval)
+////  println("VDT:", VDT)
+//}
