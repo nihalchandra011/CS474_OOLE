@@ -19,6 +19,7 @@ NOTE -
 <br>Homework 1 has been implemented in the Scala file located at ```src/test/scala/SetTheory.scala```.
 <br>Homework 2 has been implemented in the Scala file located at ```src/test/scala/SetTheory2.scala```.
 <br>Homework 3 has been implemented in the Scala file located at ```src/test/scala/SetTheory3.scala```.
+<br>Homework 4 has been implemented in the Scala file located at ```src/test/scala/SetTheory4.scala```.
 
 **Set Operations**<br>
 In this language, the following operations have been implemented:<br>
@@ -141,15 +142,20 @@ The following datatypes have been used to implement classes, objects, methods an
 
 **Testing**<br>
 Using IntelliJ:
-The tests are present under ```src/test/scala/SetTesting.scala``` and ```src/test/scala/SetTesting2.scala```. Right-click and run the programs to check the test cases.
+The tests are present under 
+```src/test/scala/SetTesting.scala``` 
+```src/test/scala/SetTesting2.scala```
+```src/test/scala/SetTesting3.scala```
+```src/test/scala/SetTesting4.scala```
+<br>Right-click and run the programs to check the test cases.
 
-Using Terminal/Command Prompt:
+Using Terminal/Command Prompt:<br>
 To run the SBT Tests from the Command Line, do the following:
-
-Open the Command Prompt.
-- Navigate to the directory holding the current project.
-- Type sbt new scala/scalatest-example.g8 and hit Enter.
-- Now run sbt test.
-- You will be prompted to enter a template name. Give it an interesting name and hit Enter.
-- This will evaluate all the test cases provided in the Project.
-- If all of them execute, you will get a green success message.
+  - Open the Command Prompt.
+  - Navigate to the directory holding the current project.
+  - Type ```sbt new scala/scalatest-example.g8``` and hit Enter.
+  - Now run ```sbt test```.
+  - You will be prompted to enter a template name. Give it an interesting name and hit Enter. 
+  - Optionally, you can also do an ```sbt clean compile test``` from the command prompt to check the execution.
+  - This will evaluate all the test cases provided in the Project.
+  - If all of them execute, you will get a green success message.
