@@ -1,5 +1,5 @@
 ## CS474_OOLE
-# Homework 3 - Set Theory
+# Homework 4 - Set Theory
 **Nihal Chandra**<br>
 **UIN: 674916217**<br><br>
 This project implements a Domain-Specific Language (DSL) using Scala for writing and evaluating set operations of Set Theory. Using this DSL, users can describe and evaluate binary operations on sets using variables and scopes where elements of the sets can be objects of any type.
@@ -10,93 +10,54 @@ This language is programmed in Scala (Version 3.1.0) and executed in the Intelli
 **Package Installation**<br>
 To use this language, clone this GitHub Repository to you local machine and execute in IntelliJ by implementing the following steps:
 - There are several ways to clone to your local machine. You can use HTTPS or SSH, amongst other options. Let’s use HTTPS as it can be the simplest option. 
-- Copy the github link of this repository.
+- Copy the GitHub link of this repository.
 - When you first open the IntelliJ IDEA page, you see a screen with the  option 'Get from VCS'. Click on that to see a box where you can enter the Github URL. 
 - Choose the directory where you want to load the project and click  on the 'Clone' button.
 - Voila! The project is loaded into your IntelliJ. You can now run the program and execute the test cases.
 
-NOTE - Homework 3 has been implemented in the Scala file located at ```src/test/scala/SetTheory3.scala```.
+NOTE - Homework 4 has been implemented in the Scala file located at ```src/main/scala/SetTheory4.scala```.
 
 **Class Constructs**<br>
-In addition to the constructs implemented in Homeworks 1 and 2, the following datatypes have been used to implement abstract classes, abstract methods and interfaces and their interaction including inheritance.
+In addition to the constructs implemented in Homeworks 1,2 and 3, the following constructs have been used to implement Branching using if-else and Exception Handling using try-catch blocks.
 
-- **AbstractClassDef(abstractClassName: String, abstractClassContents: Operations)**<br>
-  - This construct defines an abstract class.
-  - It should contain atleast 1 abstract method. (Will give an error message otherwise)
-  - In this construct, it is only created and the corresponding mappings are added.
-  - Returns the Class -> Method mappings after definition.
+- **IF(condition: Operations, thenClause: Set[Operations], elseClause: Set[Operations])**<br>
+  - This construct defines the use of if-else branching similar to OOP Languages.
+  - Follows lazy evaluation, i.e,  if the condition is evaluated to true then only thenClause is evaluated and elseClause is not.
+  - The thenClause and elseClause are given as a Set of operations.
+  - The Operations can be any of the set operations or another If-else construct.
+  - Nested If constructs are also implemented.
 
-- **AbstractMethod(methodName: String)**<br>
-  - Since it is abstract, its definition is not given.
-  - In this construct, only its mappings are added and returned.
+- **Scope(scopeName: String, expressions: Operations*)**<br>
+  - Defines the code region within which the bindings are active.
+  - Although it has been implemented before, a definitive construct has been created here to be used whenever required.
+  - The 'scopeName' is used to access the given scope.
 
-- **InterfaceDecl(interfaceName: String, abstractMethods: Operations)**<br>
-  - An interface is created with the name 'interfaceName'.
-  - It contains only abstract method.
-  - The default method has not been implemented.
-  - The abstract methods are defined when this interface is implemented.
-  - Returns mapping of interface to abstract methods.
+- **ExceptionClassDef(exceptionClassName: String, reason:Operations)**<br>
+  - Creates a class 'exceptionClassName' and pushes it to a stack to be accessed later.
+  - A mapping of the 'reason' is created that associates the exceptionClassName with the reason.
+  - Returns the mapping created between the exceptionClassName and reason.
 
-- **Implements(subClassName: String, interfaceName: String)**<br>
-  - The class 'subClassName' implemnts the 'interfaceName' interface.
-  - The parameters represent the following: subClassName - class, abstract class or interface | interfaceName: Interface
-  - Can implement multiple interfaces.
+- **ThrowException(exceptionClassName: Operations, exceptionDefinition: Operations)**<br>
+  - Throws an exception whenever encountered.
+  - Adds the value of the exception reason to the mapping mentioned previously.
 
-While building the language, the following questions helped better understand the implementation:
-- **Can a class/interface inherit from itself?**
-- **Ans.** No, Circular Definitions are not allowed, i.e., if there is a chain of inheritance from the class/interface A1 to the class/interface AN then once encountered in the chain of inheritance a class/interface AK cannot appear any more below itself in this inheritance chain.
-<br>Error: Cyclic inheritance: class className extends itself
-<br>This has been implemented in this language in the following manner:
-<br>```if (subClassName == superClassName) return "Error: Cyclic inheritance: " + subClassName + " extends itself."```
-<br>Here we check if the subClass and superClass are the same, i.e, the class calls itself. If it does, an error message is returned.
+- **CatchException(exceptionClassName: String, tryExpressions: Set[Operations], catchExpressions: Set[Operations])**<br>
+  - This construct handles the major part of try-catch block. 
+  - The 'exceptionClassName' is used to access and invoke the Exception Class whenever required.
+  - The 'tryExpressions' and 'catchExpressions' contain a set of expressions which could be operations or if-else constructs.
+  - The try block executes even if there is no exception thrown. But corresponding catch is obviously not evaluated in this case.
 
-- **Can an interface inherit from an abstract class with all pure methods?** 
-- **Ans.** No, an interface cannot inherit from an abstract class with all pure methods.
-<br> In this implementation, this has been ensured by the following code snippet:
-<br> ```if (InterfaceStack.contains(subClassName) && abstractMethodMapping.contains(superClassName))
-              "Interface cannot inherit from a pure abstract class."```
-<br>Here, we are checking if the 'subClassName' is an interface and the 'superClassName' is an abstract class.
-
-- **Can an interface implement another interface?** 
-- **Ans.** No, an interface cannot implement another interface, because if any interface is implemented then its methods must be defined and interface never has the definition of any method.
-<br> In this implementation, this has been ensured by the following code snippet:
-<br> ```if (InterfaceStack.contains(subClassName) && InterfaceStack.contains(name))
-              return "An interface cannot implement another interface.```
-<br>Here, we are checking if both the 'subClassName'and the 'superClassName' is are an interface. If yes, an error, an error message is given.
-
-- **Can a class implement two or more different interfaces that declare methods with exactly the same signatures?** 
-- **Ans.** Yes, it is possible for a class to inherit multiple methods with override-equivalent signatures. (JLS 8.4.8.4 Inheriting Methods with Override-Equivalent Signatures) If a type implements two interfaces, and each interface define a method that has identical signature, then in effect there is only one method, and they are not distinguishable. If, say, the two methods have conflicting return types, then it will be a compilation error.
-<br>Consider the following snippet: <br>
-InterfaceDecl("I1",AbstractMethod("abm1"))<br>
-InterfaceDec2("I6",AbstractMethod("abm1"))<br>
-Implements("subClass","I1","I2")<br>
-
-Here, both the interfaces have identical methods with the same signature, and on implementing them, the subClass effectively implements only a single method.
-
-- **Can an abstract class inherit from another abstract class and implement interfaces where all interfaces and the abstract class have methods with the same signatures?**
-- **Ans** An abstract class can inherit from another abstract class and as already explained the interfaces and abstract methods have the same signature as the return type is not specified. Therefore, in this implementation, we can declare methods with the same name, then the abstract class will override the interface methods. 
-
-- **Can an abstract class implement interfaces?** 
-- **Ans.** Yes,	like any other class an abstract class can also implement an interface. Only difference being since it is an abstract class it is not forced to implement all the abstract methods of the interface. However, the class extending the abstract class must implement all the abstract methods of the abstract class as well as the interface which is implemented by the abstract class or shall declare itself abstract too.
-
-- **Can a class implement two or more interfaces that have methods whose signatures differ only in return types?** 
-- **Ans.** No, it gives a compile time error. (JLS Example 8.1.5-3. Implementing Methods of a Superinterface) because a class cannot have multiple methods with the same signature and different primitive return types.
-
-- **Can an abstract class inherit from a concrete class?** 
-- **Ans.** Yes, an abstract class can inherit from a concrete class. This has been incorporated into this implementation.
-
-- **Can an abstract class/interface be instantiated as anonymous concrete classes?** 
-- **Ans.** No you cannot instantiate an interface or abstract class. But you can instantiate an anonymous class that implements/extends the interface or abstract class without defining a class object.
-
+- **Catch(catchTreatment: Operations*)**<br>
+  - Evaluates the expressions present inside the Catch block of the Try-Catch.
+  - This block only executes if an error is thrown.
+  
 **Not Implemented**<br>
-The following concepts have not been implewmented in this language yet:
-- Nested Interfaces
-- Nested Abstract Classses
-- Access Modifiers- public, private and protected
+The following concept has not been implemented in this language yet:
+- Nested try-catch block execution.
 
 **Testing**<br>
 Using IntelliJ:<br>
-The tests are present under ```src/test/scala/SetTesting3.scala```. Right-click and run the program to check the test cases. 
+The tests are present under ```src/test/scala/SetTesting4.scala```. Right-click and run the program to check the test cases. 
 
 Using Terminal/Command Prompt:<br>
 To run the SBT Tests from the Command Line, do the following:
@@ -105,5 +66,6 @@ To run the SBT Tests from the Command Line, do the following:
   - Type ```sbt new scala/scalatest-example.g8``` and hit Enter.
   - Now run ```sbt test```.
   - You will be prompted to enter a template name. Give it an interesting name and hit Enter. 
+  - Optionally, you can also do an ```sbt clean compile test``` from the command prompt to check the execution.
   - This will evaluate all the test cases provided in the Project.
   - If all of them execute, you will get a green success message.
