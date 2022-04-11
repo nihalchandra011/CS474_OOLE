@@ -17,7 +17,7 @@ To use this language, clone this GitHub Repository to you local machine and exec
 
 NOTE - Homework 4 has been implemented in the Scala file located at ```src/main/scala/SetTheory4.scala```.
 
-**Class Constructs**<br>
+**Constructs**<br>
 In addition to the constructs implemented in Homeworks 1,2 and 3, the following constructs have been used to implement Branching using if-else and Exception Handling using try-catch blocks.
 
 - **IF(condition: Operations, thenClause: Set[Operations], elseClause: Set[Operations])**<br>
