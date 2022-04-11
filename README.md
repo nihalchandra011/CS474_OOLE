@@ -47,7 +47,7 @@ In addition to the constructs implemented in Homeworks 1,2 and 3, the following 
   - The 'tryExpressions' and 'catchExpressions' contain a set of expressions which could be operations or if-else constructs.
   - The try block executes even if there is no exception thrown. But corresponding catch is obviously not evaluated in this case.
 
-- **Catch(catchTreatment: Operations*)**<br>
+- **Catch(catchTreatment: Operations)**<br>
   - Evaluates the expressions present inside the Catch block of the Try-Catch.
   - This block only executes if an error is thrown.
   
