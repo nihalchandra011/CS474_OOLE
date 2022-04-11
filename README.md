@@ -27,7 +27,7 @@ In addition to the constructs implemented in Homeworks 1,2 and 3, the following 
   - The Operations can be any of the set operations or another If-else construct.
   - Nested If constructs are also implemented.
 
-- **Scope(scopeName: String, expressions: Operations*)**<br>
+- **Scope(scopeName: String, expressions: Operations)**<br>
   - Defines the code region within which the bindings are active.
   - Although it has been implemented before, a definitive construct has been created here to be used whenever required.
   - The 'scopeName' is used to access the given scope.
