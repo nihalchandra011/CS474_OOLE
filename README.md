@@ -141,7 +141,7 @@ The following datatypes have been used to implement classes, objects, methods an
   - Can implement multiple interfaces.
 
 **Branching and Exception Handling Constructs**<br>
-In addition to the constructs implemented in Homeworks 1,2 and 3, the following constructs have been used to implement Branching using if-else and Exception Handling using try-catch blocks.
+The following constructs have been used to implement branching using if-else and exception handling using try-catch block.
 
 - **IF(condition: Operations, thenClause: Set[Operations], elseClause: Set[Operations])**<br>
   - This construct defines the use of if-else branching similar to OOP Languages.
