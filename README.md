@@ -140,6 +140,44 @@ The following datatypes have been used to implement classes, objects, methods an
   - The parameters represent the following: subClassName - class, abstract class or interface | interfaceName: Interface
   - Can implement multiple interfaces.
 
+**Branching and Exception Handling Constructs**<br>
+In addition to the constructs implemented in Homeworks 1,2 and 3, the following constructs have been used to implement Branching using if-else and Exception Handling using try-catch blocks.
+
+- **IF(condition: Operations, thenClause: Set[Operations], elseClause: Set[Operations])**<br>
+  - This construct defines the use of if-else branching similar to OOP Languages.
+  - Follows lazy evaluation, i.e,  if the condition is evaluated to true then only thenClause is evaluated and elseClause is not.
+  - The thenClause and elseClause are given as a Set of operations.
+  - The Operations can be any of the set operations or another If-else construct.
+  - Nested If constructs are also implemented.
+
+- **Scope(scopeName: String, expressions: Operations)**<br>
+  - Defines the code region within which the bindings are active.
+  - Although it has been implemented before, a definitive construct has been created here to be used whenever required.
+  - The 'scopeName' is used to access the given scope.
+
+- **ExceptionClassDef(exceptionClassName: String, reason:Operations)**<br>
+  - Creates a class 'exceptionClassName' and pushes it to a stack to be accessed later.
+  - A mapping of the 'reason' is created that associates the exceptionClassName with the reason.
+  - Returns the mapping created between the exceptionClassName and reason.
+
+- **ThrowException(exceptionClassName: Operations, exceptionDefinition: Operations)**<br>
+  - Throws an exception whenever encountered.
+  - Adds the value of the exception reason to the mapping mentioned previously.
+
+- **CatchException(exceptionClassName: String, tryExpressions: Set[Operations], catchExpressions: Set[Operations])**<br>
+  - This construct handles the major part of try-catch block. 
+  - The 'exceptionClassName' is used to access and invoke the Exception Class whenever required.
+  - The 'tryExpressions' and 'catchExpressions' contain a set of expressions which could be operations or if-else constructs.
+  - The try block executes even if there is no exception thrown. But corresponding catch is obviously not evaluated in this case.
+
+- **Catch(catchTreatment: Operations)**<br>
+  - Evaluates the expressions present inside the Catch block of the Try-Catch.
+  - This block only executes if an error is thrown.
+  
+**Not Implemented**<br>
+The following concept has not been implemented in this language yet:
+- Nested try-catch block execution.
+
 **Testing**<br>
 Using IntelliJ:
 The tests are present under 
