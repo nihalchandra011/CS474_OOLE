@@ -1,6 +1,7 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(SetTesting2, org.scalatest.tools.Framework$$anon$1@77303f, false, [SuiteSelector])[0m
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(SetTesting, org.scalatest.tools.Framework$$anon$1@77303f, false, [SuiteSelector])[0m
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(SetTesting3, org.scalatest.tools.Framework$$anon$1@77303f, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(SetTesting2, org.scalatest.tools.Framework$$anon$1@178e916, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(SetTesting3, org.scalatest.tools.Framework$$anon$1@178e916, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(SetTesting4, org.scalatest.tools.Framework$$anon$1@178e916, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(SetTesting, org.scalatest.tools.Framework$$anon$1@178e916, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mSetTesting2:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mClass Definition and Object Creation[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should define a class and instantiate it[0m[0m
@@ -29,6 +30,21 @@
 [0m[[0m[0minfo[0m] [0m[0m[32m- should define a class and instantiate it[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mA Class implementing multiple interfaces[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should ensure that a class implements 2 or more interfaces within a single Implements construct[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mSetTesting4:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mIF construct's parameters' execution[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should ensure proper flow of execution for check, thenClause and elseClause[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mIF construct[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should ensure proper flow of execution based on the evaluated condition[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mNested IF construct[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should ensure proper flow of execution based on the evaluated condition of both outer and inner nested if-else[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mException Handing - ExceptionClassDef Construct[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should create a mapping of the reason with the Exception Class Name[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mBasic Try - Catch Block Execution[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Execute the contents of the catch block when try raises an error[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTry-Catch: Execute entire try block without any exception[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should execute all expressions in try block when there is no exception raised and not go into catch block[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTry-Catch: Checking if the code after throwing exception in try doesn't execute[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should not execute the code part present after throwing an exception[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mSetTesting:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mCheck Operation[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should check if an element is present in a set or not[0m[0m
@@ -46,12 +62,13 @@
 [0m[[0m[0minfo[0m] [0m[0m[32m- should prevent the elements present inside the inner scope to be accessed in the outer scope[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mSet Operations[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should find the union, intersection, difference, symmetric difference and cartesian product of the given sets[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 554 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 21[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 3, aborted 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 21, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 571 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 28[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 4, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 28, failed 0, canceled 0, ignored 0, pending 0[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	SetTesting[0m
 [0m[[0m[0mdebug[0m] [0m[0m	SetTesting3[0m
 [0m[[0m[0mdebug[0m] [0m[0m	SetTesting2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SetTesting4[0m
