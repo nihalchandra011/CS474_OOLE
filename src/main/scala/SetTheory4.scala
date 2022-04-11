@@ -14,7 +14,7 @@ object SetTheory4:
   private val objectMapping = mutable.Map[String, String]()
   private val abstractMethodMapping = mutable.Map[String, Set[String]]()
   private val exceptionMapping = mutable.Map[String, String]()
-  
+
   //Stacks controlling the scope of objects, classes and interfaces
   private val ObjectStack = mutable.Stack[Any]("global")
   private val ClassStack = mutable.Stack[String]()
@@ -28,7 +28,8 @@ object SetTheory4:
   private val ab = mutable.Map[String,Boolean]("ab"->false)
   private val imp = mutable.Stack[Boolean]()
   private val errorThrown = mutable.Stack[Any](0)
-  
+  private val tcStack = mutable.Stack[Any]()
+
 
   //The following expressions are executed when a corresponding case match is found
   enum Operations:
@@ -37,6 +38,7 @@ object SetTheory4:
     case Variable(varName: String)
     case Assign(varName: String, value: Any)
     case Check(setName: Any, element: Operations)
+    case GetBinding(name: String)
     case Insert(varName: String, element: Operations)
     case Delete(varName: String, element: Operations)
     case Union(set1: String, set2: String)
@@ -74,12 +76,19 @@ object SetTheory4:
         //Returns the Value that is passed into it
         case Value(i) => i
 
+        // Gets the value of any parameter present in Binding
+        case GetBinding(name) =>
+          Binding(name)
+
         //Returns the corresponding value stored in the 'varName' if it exists or else assigns it a value of 0
         case Variable(varName) =>
+          // If an exception has occurred, then the varName is added to the exceptionMapping
           if (ScopeStack.top == "exception")
             exceptionMapping += varName -> ClassStack.top
             return exceptionMapping
 
+          // Checks if the variable is already present in the binding
+          //If present, then return its value, else creates a binding with default value 0
           if (Binding.contains(varName))
             Binding(varName)
           else
@@ -88,6 +97,7 @@ object SetTheory4:
 
         //Assigns the 'value' to the variableName 'varName'
         case Assign(varName, value) =>
+          // If an exception has occurred, then the varName is added to the fieldMapping
           if (ScopeStack.top == "exception") {
             if (fieldMapping(ClassStack.top).contains(varName))
               fieldMapping(ClassStack.top) += varName -> value
@@ -96,6 +106,7 @@ object SetTheory4:
               fieldMapping(ClassStack.top) += varName -> value
             return fieldMapping(ClassStack.top)(varName)
           }
+          //This part is executed only if an object is called
           else if (Called("called")) {
             Called("called") = false
             if (fieldMapping(objectMapping(ObjectStack.asInstanceOf[String])).contains(varName)) {
@@ -105,6 +116,7 @@ object SetTheory4:
               println(varName + " does not exist.")
             }
           }
+          // The code below is the default execution when Field is called
           else {
             if (fieldMapping(objectMapping(ObjectStack.asInstanceOf[String])).contains(varName)) {
               fieldMapping(objectMapping(ObjectStack.asInstanceOf[String])) += varName -> value
@@ -118,9 +130,11 @@ object SetTheory4:
 
         // Checks if the two operators are equal
         case Check(operator1, operator2) =>
+          // If they are present in Binding and are equal
           if (Binding.contains(operator1.asInstanceOf[String]) && (Binding(operator1.asInstanceOf[String]) == operator2.eval))
             true
           else {
+            // If they are equal and not in Binding
             if (operator1==operator2)
               true
             else false
@@ -168,11 +182,13 @@ object SetTheory4:
 
         //Creates a mapping associating the className with the field and its value (default: None)
         case Field(fieldName) =>
+          // If an exception has occurred, then a fieldName is created and added to the fieldMapping
           if (ScopeStack.top == "exception") {
             fieldMapping += ClassStack.top -> Map()
             fieldMapping(ClassStack.top) += fieldName -> "None"
             return fieldMapping(ClassStack.top)(fieldName)
           }
+          // Used when Abstract Classes are implemented
           if (ab("ab")) {
             fieldMapping += AbstractClassStack.top -> Map()
             fieldMapping(AbstractClassStack.top) += fieldName -> "None"
@@ -194,6 +210,7 @@ object SetTheory4:
         //Execution of the Method Construct
         case Method(methodName, methodsExp*) =>
           for (exp <- methodsExp)
+            // Used when Abstract Classes are implemented
             if (ab("ab")) {
               if (methodMapping.contains(AbstractClassStack.top))
                 methodMapping(AbstractClassStack.top) += methodName -> exp
@@ -201,6 +218,7 @@ object SetTheory4:
                 methodMapping += AbstractClassStack.top -> Map()
               methodMapping(AbstractClassStack.top) += methodName -> exp
             }
+            // This code below is the default implementation otherwise
             else {
               if (methodMapping.contains(ClassStack.top))
                 methodMapping(ClassStack.top) += methodName -> exp
@@ -212,10 +230,12 @@ object SetTheory4:
 
         //Creates a new object and initializes the values defined in the class constructor
         case NewObject(className, objName) =>
+          //Preventing Abstract Classes to be instantiated
           if (abstractMethodMapping.contains(className)) return className + " cannot be instantiated."
           ObjectStack.push(objName)
           objectMapping += (objName -> className)
           Called("called") = true
+          // Evoking the corresponding class constructor
           if (constructorMapping.contains(className))
             constructorMapping(className).eval
           fieldMapping(className)
@@ -229,22 +249,30 @@ object SetTheory4:
         //Implements the conventional 'extends' keyword
         //This expression gets in all the methods and variables of the superclass into the subclass
         case Extends(subClassName, superClassName) =>
+          //Checks for Cyclic inheritance
           if (subClassName == superClassName) return "Error: Cyclic inheritance: " + subClassName + " extends itself."
           Flag(subClassName)+=1
+          // Check to prevent multiple inheritance
           if (Flag(subClassName)<2) {
+            //If an interface extends another interface
             if (InterfaceStack.contains(subClassName) && InterfaceStack.contains(superClassName)) {
               abstractMethodMapping += subClassName -> abstractMethodMapping(subClassName).++(abstractMethodMapping(superClassName))
               abstractMethodMapping
             }
+            //If an interface extends an Abstract class
+            //Check to prevent the interface to inherit from a pure abstract class
             else if (InterfaceStack.contains(subClassName) && abstractMethodMapping.contains(superClassName))
               "Interface cannot inherit from a pure abstract class."
 
+            //If an abstract class extends another abstract class
             else if (abstractMethodMapping.contains(subClassName) && abstractMethodMapping.contains(superClassName)) {
               methodMapping += subClassName -> methodMapping(subClassName).++(methodMapping(superClassName))
               methodMapping
             }
+            //If a concrete class extends an abstract class
             else if (methodMapping.contains(subClassName) && abstractMethodMapping.contains(superClassName)) {
               methodMapping += subClassName -> methodMapping(subClassName).++(methodMapping(superClassName))
+              // Checking to see if all abstract methods have been implemented or not
               for (methodName <- abstractMethodMapping(superClassName))
                 if (methodMapping(subClassName).contains(methodName)) imp += true
                 else
@@ -252,6 +280,7 @@ object SetTheory4:
                   return "Please implement all abstract methods."
               methodMapping
             }
+            //If a concrete class extends another concrete class
             else if (methodMapping.contains(subClassName) && methodMapping.contains(superClassName)) {
               methodMapping += subClassName -> methodMapping(subClassName).++(methodMapping(superClassName))
               methodMapping
@@ -267,6 +296,7 @@ object SetTheory4:
             exp.eval
           methodMapping
 
+        //Definition of Abstract Classes
         case AbstractClassDef(abstractClassName, abstractClassContents*) =>
           ab("ab") = true
           Flag += abstractClassName->0
@@ -348,6 +378,7 @@ object SetTheory4:
         // Throws an Exception of the 'exceptionClassName'
         case ThrowException(exceptionClassName, exceptionDefinition) =>
           exceptionClassName.eval
+          // Pushing 1 to errorThrown to indicate throw of exception
           errorThrown.push(1)
           errorThrown.top
 //          throw Exception(exceptionDefinition.eval.asInstanceOf[String])
@@ -358,26 +389,30 @@ object SetTheory4:
             ScopeStack.push("exception")
           if !ClassStack.contains(exceptionClassName) then
             ClassStack.push(exceptionClassName)
+          // tcStack takes care of nested try-catch blocks
+          tcStack.push(1)
 
+          // Try block execution
           for (tExp<-tryExpressions)
-            println(tExp)
               if(errorThrown.top == 0)
-                println("Inner: "+tExp)
                 tExp.eval
 
+          // Catch block execution
           if(errorThrown.top == 1)
+            tcStack.pop()
               for (cExp<-catchExpressions)
-                println(cExp)
                 cExp.eval
-              errorThrown.pop()
+              if (tcStack.length==0)
+                errorThrown.pop()
           ClassStack.pop()
-        
-        // Catch and treat the exceptions and evaluate all the remaining exceptions as well 
+
+
+        // Catch and treat the exceptions and evaluate all the remaining exceptions as well
         case Catch(catchTreatment*) =>
           for(exp<-catchTreatment)
             exp.eval
           ScopeStack.pop()
-          ClassStack.pop()
+//          ClassStack.pop()
 
         // Handles the scope od any code block
         case Scope(scopeName, expressions*) =>

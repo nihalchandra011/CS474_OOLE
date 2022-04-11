@@ -17,7 +17,7 @@ To use this language, clone this GitHub Repository to you local machine and exec
 
 NOTE - Homework 4 has been implemented in the Scala file located at ```src/main/scala/SetTheory4.scala```.
 
-**Class Constructs**<br>
+**Constructs**<br>
 In addition to the constructs implemented in Homeworks 1,2 and 3, the following constructs have been used to implement Branching using if-else and Exception Handling using try-catch blocks.
 
 - **IF(condition: Operations, thenClause: Set[Operations], elseClause: Set[Operations])**<br>
@@ -44,16 +44,12 @@ In addition to the constructs implemented in Homeworks 1,2 and 3, the following 
 - **CatchException(exceptionClassName: String, tryExpressions: Set[Operations], catchExpressions: Set[Operations])**<br>
   - This construct handles the major part of try-catch block. 
   - The 'exceptionClassName' is used to access and invoke the Exception Class whenever required.
-  - The 'tryExpressions' and 'catchExpressions' contain a set of expressions which could be operations or if-else constructs.
+  - The 'tryExpressions' and 'catchExpressions' contain a set of expressions which could be operations, if-else or try-catch constructs.
   - The try block executes even if there is no exception thrown. But corresponding catch is obviously not evaluated in this case.
 
 - **Catch(catchTreatment: Operations)**<br>
   - Evaluates the expressions present inside the Catch block of the Try-Catch.
   - This block only executes if an error is thrown.
-  
-**Not Implemented**<br>
-The following concept has not been implemented in this language yet:
-- Nested try-catch block execution.
 
 **Testing**<br>
 Using IntelliJ:<br>
