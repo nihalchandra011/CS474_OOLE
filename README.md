@@ -1,5 +1,5 @@
 ## CS474_OOLE
-# Homework 4 - Set Theory
+# Homework 5 - Set Theory
 **Nihal Chandra**<br>
 **UIN: 674916217**<br><br>
 This project implements a Domain-Specific Language (DSL) using Scala for writing and evaluating set operations of Set Theory. Using this DSL, users can describe and evaluate binary operations on sets using variables and scopes where elements of the sets can be objects of any type.
@@ -15,41 +15,20 @@ To use this language, clone this GitHub Repository to you local machine and exec
 - Choose the directory where you want to load the project and click  on the 'Clone' button.
 - Voila! The project is loaded into your IntelliJ. You can now run the program and execute the test cases.
 
-NOTE - Homework 4 has been implemented in the Scala file located at ```src/main/scala/SetTheory4.scala```.
+NOTE - Homework 5 has been implemented in the Scala file located at ```src/main/scala/SetTheory5.scala``` and ```src/main/scala/Optimizer.scala```.
 
 **Constructs**<br>
-In addition to the constructs implemented in Homeworks 1,2 and 3, the following constructs have been used to implement Branching using if-else and Exception Handling using try-catch blocks.
+In this homework, instead of creating new constructs, the earlier constructs were modified in order to incroporate the changes and allow for partial evaluation and optimization functions. The following constructs have been mainly changed:
 
-- **IF(condition: Operations, thenClause: Set[Operations], elseClause: Set[Operations])**<br>
-  - This construct defines the use of if-else branching similar to OOP Languages.
-  - Follows lazy evaluation, i.e,  if the condition is evaluated to true then only thenClause is evaluated and elseClause is not.
-  - The thenClause and elseClause are given as a Set of operations.
-  - The Operations can be any of the set operations or another If-else construct.
-  - Nested If constructs are also implemented.
+- **Variable(varName)**
+  - Checks if the variable exists in the binding.
+  - If yes, then returns its value
+  - Or else, the entire expression Variable(varName) is returned as it is, instead of giving an error.
 
-- **Scope(scopeName: String, expressions: Operations)**<br>
-  - Defines the code region within which the bindings are active.
-  - Although it has been implemented before, a definitive construct has been created here to be used whenever required.
-  - The 'scopeName' is used to access the given scope.
-
-- **ExceptionClassDef(exceptionClassName: String, reason:Operations)**<br>
-  - Creates a class 'exceptionClassName' and pushes it to a stack to be accessed later.
-  - A mapping of the 'reason' is created that associates the exceptionClassName with the reason.
-  - Returns the mapping created between the exceptionClassName and reason.
-
-- **ThrowException(exceptionClassName: Operations, exceptionDefinition: Operations)**<br>
-  - Throws an exception whenever encountered.
-  - Adds the value of the exception reason to the mapping mentioned previously.
-
-- **CatchException(exceptionClassName: String, tryExpressions: Set[Operations], catchExpressions: Set[Operations])**<br>
-  - This construct handles the major part of try-catch block. 
-  - The 'exceptionClassName' is used to access and invoke the Exception Class whenever required.
-  - The 'tryExpressions' and 'catchExpressions' contain a set of expressions which could be operations, if-else or try-catch constructs.
-  - The try block executes even if there is no exception thrown. But corresponding catch is obviously not evaluated in this case.
-
-- **Catch(catchTreatment: Operations)**<br>
-  - Evaluates the expressions present inside the Catch block of the Try-Catch.
-  - This block only executes if an error is thrown.
+- **Check(operator1, operator2)**
+  - Checks if both the operators exist in the binding.
+  - If yes, then compares them and returns a boolean value. 
+  - Or else, if either of the operators do not exist the entire expression, the expression is returns based after partial evaluation of whatever binding exists, instead of giving an error.
 
 **Testing**<br>
 Using IntelliJ:<br>
