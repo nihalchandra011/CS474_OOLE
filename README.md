@@ -81,15 +81,19 @@ Following optimizations are implemented:
 For Intersection:
 If Intersection(Variable("x"), Variable("x")) gives Variable("x")
 Intersection(Variable("x"), CreateSet()) i.e. Intersection with empty set gives mutable.HashSet()
+
 For Union:
 If Union(Variable("x"), Variable("x")) gives Variable("x")
 Union(Variable("x"), CreateSet()) i.e. Union with empty set gives Variable("x")
+
 For Difference:
 If Difference(Variable("x"), Variable("x")) gives mutable.HashSet()
 Difference(Variable("x"), CreateSet()) i.e. Difference with empty set gives Variable("x")
+
 For Symmetric difference:
 If Difference(Variable("x"), Variable("x")) gives mutable.HashSet()
 Difference(Variable("x"), CreateSet()) i.e. Difference with empty set gives Variable("x")
+
 For If-Else:
 If-else has been optimized such that if the condition is true, then thenExp is returned, else elseExp is returned.
 Test case is not implemented for demonstration as it is still in development phase.
@@ -97,7 +101,7 @@ Test case is not implemented for demonstration as it is still in development pha
 
 **Testing**<br>
 Using IntelliJ:<br>
-The tests are present under ```src/test/scala/SetTesting4.scala```. Right-click and run the program to check the test cases. 
+The tests are present under ```src/test/scala/SetTesting5.scala```. Right-click and run the program to check the test cases. 
 
 Using Terminal/Command Prompt:<br>
 To run the SBT Tests from the Command Line, do the following:
