@@ -20,6 +20,7 @@ NOTE -
 <br>Homework 2 has been implemented in the Scala file located at ```src/test/scala/SetTheory2.scala```.
 <br>Homework 3 has been implemented in the Scala file located at ```src/test/scala/SetTheory3.scala```.
 <br>Homework 4 has been implemented in the Scala file located at ```src/test/scala/SetTheory4.scala```.
+<br>Homework 5 has been implemented in the Scala file located at ```src/test/scala/SetTheory5.scala```.
 
 **Set Operations**<br>
 In this language, the following operations have been implemented:<br>
@@ -185,6 +186,7 @@ The tests are present under
 ```src/test/scala/SetTesting2.scala```
 ```src/test/scala/SetTesting3.scala```
 ```src/test/scala/SetTesting4.scala```
+```src/test/scala/SetTesting5.scala```
 <br>Right-click and run the programs to check the test cases.
 
 Using Terminal/Command Prompt:<br>
