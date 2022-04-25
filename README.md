@@ -77,27 +77,27 @@ In this homework, instead of creating new constructs, the earlier constructs wer
 
 
 **Optimization**
-Following optimizations are implemented:
-For Intersection:
+Following optimizations are implemented:<br>
+For Intersection:<br>
 If Intersection(Variable("x"), Variable("x")) gives Variable("x")
 Intersection(Variable("x"), CreateSet()) i.e. Intersection with empty set gives mutable.HashSet()
 
-For Union:
+For Union:<br>
 If Union(Variable("x"), Variable("x")) gives Variable("x")
 Union(Variable("x"), CreateSet()) i.e. Union with empty set gives Variable("x")
 
-For Difference:
+For Difference:<br>
 If Difference(Variable("x"), Variable("x")) gives mutable.HashSet()
 Difference(Variable("x"), CreateSet()) i.e. Difference with empty set gives Variable("x")
 
-For Symmetric difference:
+For Symmetric difference:<br>
 If Difference(Variable("x"), Variable("x")) gives mutable.HashSet()
 Difference(Variable("x"), CreateSet()) i.e. Difference with empty set gives Variable("x")
 
-For If-Else:
+For If-Else:<br>
 If-else has been optimized such that if the condition is true, then thenExp is returned, else elseExp is returned.
 Test case is not implemented for demonstration as it is still in development phase.
-
+<br>
 
 **Testing**<br>
 Using IntelliJ:<br>
