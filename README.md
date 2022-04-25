@@ -75,24 +75,28 @@ In this homework, instead of creating new constructs, the earlier constructs wer
   - If yes, then creates an object ojbName of the class.
   - Or else, if either of the operators do not exist the entire expression, the expression is returns as it is, instead of giving an error.
 
+**Not Implemented**
+- The IF construct has not been completely modified to allow partial evaluation.
+- Optimization constructs for five cases are written in Optimizer.scala (not present in test file). 
 
 **Optimization**
+<br>
 Following optimizations are implemented:<br>
 For Intersection:<br>
-If Intersection(Variable("x"), Variable("x")) gives Variable("x")
-Intersection(Variable("x"), CreateSet()) i.e. Intersection with empty set gives mutable.HashSet()
+- If Intersection(Variable("x"), Variable("x")) returns Variable("x")
+- Intersection(Variable("x"), CreateSet()) i.e. Intersection with empty set returns mutable.HashSet()
 
 For Union:<br>
-If Union(Variable("x"), Variable("x")) gives Variable("x")
-Union(Variable("x"), CreateSet()) i.e. Union with empty set gives Variable("x")
+If Union(Variable("x"), Variable("x")) returns Variable("x")
+Union(Variable("x"), CreateSet()) i.e. Union with empty set returns Variable("x")
 
 For Difference:<br>
-If Difference(Variable("x"), Variable("x")) gives mutable.HashSet()
-Difference(Variable("x"), CreateSet()) i.e. Difference with empty set gives Variable("x")
+If Difference(Variable("x"), Variable("x")) returns mutable.HashSet()
+Difference(Variable("x"), CreateSet()) i.e. Difference with empty set returns Variable("x")
 
 For Symmetric difference:<br>
-If Difference(Variable("x"), Variable("x")) gives mutable.HashSet()
-Difference(Variable("x"), CreateSet()) i.e. Difference with empty set gives Variable("x")
+If Difference(Variable("x"), Variable("x")) returns mutable.HashSet()
+Difference(Variable("x"), CreateSet()) i.e. Difference with empty set returns Variable("x")
 
 For If-Else:<br>
 If-else has been optimized such that if the condition is true, then thenExp is returned, else elseExp is returned.
